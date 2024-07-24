@@ -1,0 +1,22 @@
+
+<h3 class="title">Campaigns</h3>
+<button mat-button class="nbuttonEnd" (click)="createCampaign()"> + New</button>
+<div class="grid-container">
+   
+    <div class="card" *ngFor="let item of campaigns">
+      <h3>{{ item.name }}</h3>
+      <p>{{ item.description }}</p>
+      <p>Goal Amount: {{ item.goalAmount | currency }}</p>
+      <p>Deadline: {{ item.deadline | date:'shortDate' }}</p>
+      <p>Donated Amount: {{ item.donatedAmount | currency }}</p>
+
+        <!-- Progres bar -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" [ngStyle]="{'width': calculateProgress(item.donatedAmount, item.goalAmount) + '%'}"></div>
+    </div>
+
+    <!-- Dugme Donate -->
+    <button class="donate-button" (click)="donate(item.id)">Donate</button>
+
+    </div>
+  </div>

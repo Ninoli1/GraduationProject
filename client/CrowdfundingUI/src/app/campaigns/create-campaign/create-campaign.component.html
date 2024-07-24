@@ -1,0 +1,22 @@
+<div class="form-container">
+    <form (ngSubmit)="onSubmit()" #campaignForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required [(ngModel)]="campaign.name" name="name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" required [(ngModel)]="campaign.description" name="description" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="goalAmount">Goal Amount:</label>
+        <input type="number" id="goalAmount" required [(ngModel)]="campaign.goalAmount" name="goalAmount" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="deadline">Deadline:</label>
+        <input type="date" id="deadline" required [(ngModel)]="campaign.deadline" name="deadline" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  

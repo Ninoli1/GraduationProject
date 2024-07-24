@@ -1,0 +1,71 @@
+:host {
+  display: block;
+  min-height: 100vh; /* Postavlja minimalnu visinu na 100% visine prozora */
+  background-color: #55785b; /* Zelena pozadina */
+  overflow: hidden; /* Sprečava pojavu skrol trake */
+}
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Tačno 5 kolona */
+    gap: 20px; /* Razmak između kartica */
+    padding: 20px; /* Dodatni prostor oko kartica unutar kontejnera */
+    height: 100%; /* Zauzimanje cele visine roditeljskog elementa (tj. tela) */
+  }
+  
+  .card {
+    margin-top: 20px;
+    background-color:  #fffdd0;
+    border-radius: 10px; /* Zaobljeni uglovi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Blaga senka za efekt dubine */
+    padding: 20px; /* Unutrašnji prostor unutar kartice */
+    max-width: 100%; /* Maksimalna širina kartice */
+    
+  }
+  .nbuttonEnd {
+    padding-right: 10px;
+    height: 5%;
+    font-size: 22px;
+    font-family: Georgia, serif;
+    font-weight: medium;
+    margin-left: 20px;
+    margin-top: 100px;
+    border: none;
+    border-radius: 4px;
+    background-color: #fffdd0;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .title{
+    text-align: center;
+  }
+
+  .progress-bar-container {
+    margin-top: 20px; /* Razmak između sadržaja i progress bara */
+    width: 100%;
+    background-color: #f3f3f3; /* Pozadina progress bara */
+    border-radius: 5px;
+    overflow: hidden; /* Da bi se zaobljeni krajevi videli */
+    height: 10px; /* Visina progress bara */
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: #4caf50; /* Boja progress bara */
+    transition: width 0.3s ease; /* Efekat prelaza */
+  }
+  
+  .donate-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4caf50; /* Boja dugmeta */
+    color: white;
+    border: none;
+    border-radius: 20px; /* Zaobljeni uglovi dugmeta */
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .donate-button:hover {
+    background-color: #45a049; /* Tamnija nijansa pri prelazu miša */
+  }

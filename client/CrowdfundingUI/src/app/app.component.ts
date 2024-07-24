@@ -12,6 +12,11 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { LoginComponent } from './layout/login/login.component';
 import { HomeComponent } from './layout/home/home.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ShowCampaignsComponent } from './campaigns/show-campaigns/show-campaigns.component';
+import { CreateCampaignComponent } from './campaigns/create-campaign/create-campaign.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DonateComponent } from './campaigns/donate/donate.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -28,9 +33,19 @@ import { HomeComponent } from './layout/home/home.component';
     MatDialogModule,
     MatRadioModule,
     MatTabsModule,
+    HttpClientModule,
+
+
+
+
+
+
     NavbarComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ShowCampaignsComponent,
+    CreateCampaignComponent,
+    DonateComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

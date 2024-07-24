@@ -1,0 +1,12 @@
+<div class="form-container">
+    <form (ngSubmit)="onSubmit()" #campaignForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required [(ngModel)]="amount" name="name" class="form-control">
+      </div>
+     
+      <button type="submit" class="btn btn-primary">Submit</button>
+        <button mat-button  class="btn btn-primary" (click)="onCancel()"> Cancel</button>
+    </form>
+  </div>
+  
