@@ -33,9 +33,9 @@ public class CampaignService {
         return dtos;
     }
 
-    public void updateDonatedAmount(long amount,long id){
+    public void updateDonatedAmount(double amount,long id){
         Campaign old= repo.findById(id).get();
-        long updatedAmount= old.getDonatedAmount()+ amount;
+        double updatedAmount= old.getDonatedAmount()+ amount;
         old.setDonatedAmount(updatedAmount);
         repo.save(old);
     }

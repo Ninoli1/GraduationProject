@@ -37,7 +37,7 @@ public class CampaignController {
 
     @CrossOrigin(origins = "*")
     @PutMapping ("/updateAmount/{amount}")
-    public void updateAmount(@PathVariable long amount, @RequestBody long id){
+    public void updateAmount(@PathVariable double amount, @RequestBody long id){
       campaignService.updateDonatedAmount(amount,id);
 
 
