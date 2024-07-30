@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { Campaign } from '../../model/campaign.model';
-import { CampaignService } from '../../service/campaign.service';
+import { CampaignService } from '../../service/campaignService/campaign.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CreateCampaignComponent } from '../create-campaign/create-campaign.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DonateComponent } from '../donate/donate.component';
 import confetti from 'canvas-confetti';
+import { Web3Service } from '../../service/Web3Service/web3.service';
 
 
 
@@ -25,7 +26,7 @@ import confetti from 'canvas-confetti';
 export class ShowCampaignsComponent {
   campaigns : Campaign[]=[]
 
-  constructor(private campaignService: CampaignService,private dialog: MatDialog) {
+  constructor(private campaignService: CampaignService,private dialog: MatDialog,private web3Service : Web3Service) {
     this.getAllCampaigns()
   }
 
@@ -72,6 +73,7 @@ export class ShowCampaignsComponent {
         this.campaignService.updateAmount(amount,campaignId).subscribe({
           next: (res) => {
            this.getAllCampaigns();
+           this.rewardUser();
           },
           error: (err) => {
             console.log(err);
@@ -81,6 +83,16 @@ export class ShowCampaignsComponent {
     });
 
   // this.showConfettiMultipleTimes()
+  }
+
+  rewardUser() {
+    this.web3Service.rewardUser('address', '1')
+      .then(() => {
+        console.log('User rewarded successfully');
+      })
+      .catch((err: any) => {
+        console.error('Failed to reward user', err);
+      });
   }
 
     // Funkcija koja generiše konfete
