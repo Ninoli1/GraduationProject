@@ -1,6 +1,17 @@
 
 <h3 class="title">Campaigns</h3>
+<div class="categories-container">
+  <div class="category" *ngFor="let category of categories" matTooltip="{{category.name}}"  >
+    <div class="category-icon">
+      <!-- Ubacivanje slike iz assets foldera -->
+      <img *ngIf="!category.emoji" [src]="category.image" >
+      <span *ngIf="category.emoji" class="large-emoji">{{ category.emoji }}</span>
+    </div>
+    
+  </div>
+</div>
 <button mat-button class="nbuttonEnd" (click)="createCampaign()"> + New</button>
+
 <div class="grid-container">
    
     <div class="card" *ngFor="let item of campaigns">
@@ -16,7 +27,8 @@
     </div>
 
     <!-- Dugme Donate -->
-    <button class="donate-button" (click)="donate(item.id)">Donate</button>
-
+    <button class="donate-button" (click)="donate(item.id)">Donate via MetaMask</button>
+    <button class="donate-button" (click)="donatePayPal(item.id)">Donate via PayPal</button>
+    <div #paymentRef></div>
     </div>
   </div>

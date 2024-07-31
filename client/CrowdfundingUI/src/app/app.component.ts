@@ -17,6 +17,7 @@ import { ShowCampaignsComponent } from './campaigns/show-campaigns/show-campaign
 import { CreateCampaignComponent } from './campaigns/create-campaign/create-campaign.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DonateComponent } from './campaigns/donate/donate.component';
+import { DonatePayPalComponent } from './campaigns/donate-pay-pal/donate-pay-pal.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -45,7 +46,8 @@ import { DonateComponent } from './campaigns/donate/donate.component';
     LoginComponent,
     ShowCampaignsComponent,
     CreateCampaignComponent,
-    DonateComponent
+    DonateComponent,
+    DonatePayPalComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

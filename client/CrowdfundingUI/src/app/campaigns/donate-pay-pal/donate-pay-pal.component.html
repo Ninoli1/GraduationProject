@@ -4,9 +4,10 @@
         <label for="name">Amount:</label>
         <input type="text" id="name" required [(ngModel)]="amount" name="name" class="form-control">
       </div>
-     
+      <div #paymentRef></div>
       <button type="submit" class="btn btn-primary">Submit</button>
         <button mat-button  class="btn btn-primary" (click)="onCancel()"> Cancel</button>
     </form>
   </div>
+ 
   
