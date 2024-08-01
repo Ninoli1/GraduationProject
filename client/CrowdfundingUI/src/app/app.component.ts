@@ -18,6 +18,7 @@ import { CreateCampaignComponent } from './campaigns/create-campaign/create-camp
 import { HttpClientModule } from '@angular/common/http';
 import { DonateComponent } from './campaigns/donate/donate.component';
 import { DonatePayPalComponent } from './campaigns/donate-pay-pal/donate-pay-pal.component';
+import { RewardMessageComponent } from './campaigns/reward-message/reward-message.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -47,7 +48,8 @@ import { DonatePayPalComponent } from './campaigns/donate-pay-pal/donate-pay-pal
     ShowCampaignsComponent,
     CreateCampaignComponent,
     DonateComponent,
-    DonatePayPalComponent
+    DonatePayPalComponent,
+    RewardMessageComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

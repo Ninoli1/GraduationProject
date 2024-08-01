@@ -1,8 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef,MatDialog } from '@angular/material/dialog';
 import { Web3Service } from '../../service/Web3Service/web3.service';
 import { HttpClient } from '@angular/common/http';
+import { TransactionMessageComponent } from '../transaction-message/transaction-message.component';
 @Component({
   selector: 'app-donate-pay-pal',
   standalone: true,
@@ -14,7 +15,7 @@ export class DonatePayPalComponent implements OnInit {
   amount:number=0;
   amountUSD:number=0;
   @ViewChild('paymentRef', {static:true}) paymentRef!:ElementRef;
-  constructor(private dialogRef: MatDialogRef<DonatePayPalComponent>) {
+  constructor(private dialogRef: MatDialogRef<DonatePayPalComponent>,private dialog: MatDialog) {
   }
   ngOnInit(): void {
     window.paypal.Buttons({
@@ -37,6 +38,14 @@ export class DonatePayPalComponent implements OnInit {
           return actions.order.capture().then((details:any)=>{
               if(details.status==='COMPLETED'){
                 console.log('USPJESNO', details.id)
+                this.dialogRef.close(this.amount)
+                
+                const dialogRef3 = this.dialog.open(TransactionMessageComponent,{
+                data: {
+                transactionDetails: details
+                }
+                });
+                 
               }
           })
         },

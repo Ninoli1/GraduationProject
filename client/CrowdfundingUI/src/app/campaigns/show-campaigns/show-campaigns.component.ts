@@ -11,6 +11,9 @@ import { Web3Service } from '../../service/Web3Service/web3.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { style } from '@angular/animations';
 import { DonatePayPalComponent } from '../donate-pay-pal/donate-pay-pal.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { RewardMessageComponent } from '../reward-message/reward-message.component';
 
 declare var paypal: any;
 
@@ -22,14 +25,14 @@ declare var paypal: any;
     NgFor,
     CommonModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSnackBarModule
   ],
   templateUrl: './show-campaigns.component.html',
   styleUrl: './show-campaigns.component.css'
 })
 export class ShowCampaignsComponent {
   campaigns : Campaign[]=[]
- @ViewChild('paymentRef', {static:true}) paymentRef!:ElementRef;
   categories = [
     { name: 'REDUCE CO2', image:'/assets/creduce.jpg'},
     { name: 'Green Spaces', image: '', emoji: '🌳' },
@@ -37,8 +40,9 @@ export class ShowCampaignsComponent {
     { name: 'Animals', image:'/assets/sapa.png' },
     
   ];
-  constructor(private campaignService: CampaignService,private dialog: MatDialog,private web3Service : Web3Service) {
+  constructor(private campaignService: CampaignService,private dialog: MatDialog,private web3Service : Web3Service,private snackBar:MatSnackBar) {
     this.getAllCampaigns()
+  
   }
  
 
@@ -101,6 +105,8 @@ export class ShowCampaignsComponent {
     this.web3Service.rewardUser('address', '1')
       .then(() => {
         console.log('User rewarded successfully');
+        this.showRewardMessage()
+        this.showConfettiMultipleTimes()
       })
       .catch((err: any) => {
         console.error('Failed to reward user', err);
@@ -126,7 +132,7 @@ export class ShowCampaignsComponent {
   
     showConfettiMultipleTimes() {
       let count = 0;
-      const maxCount = 8; // Broj ponavljanja
+      const maxCount = 10; // Broj ponavljanja
       const interval = 500; // Interval između prikazivanja u milisekundama
   
       const intervalId = setInterval(() => {
@@ -140,12 +146,14 @@ export class ShowCampaignsComponent {
     }
 
     donatePayPal(campaignId:number){
-      const dialogRef3 = this.dialog.open(DonatePayPalComponent);
-/*
-      dialogRef2.afterClosed().subscribe(amount => {
+      const dialogRef4 = this.dialog.open(DonatePayPalComponent);
+
+      dialogRef4.afterClosed().subscribe(amount => {
         if (amount) {
+          console.log('zatvorio')
           this.campaignService.updateAmount(amount,campaignId).subscribe({
             next: (res) => {
+              
              this.getAllCampaigns();
              
             },
@@ -155,46 +163,10 @@ export class ShowCampaignsComponent {
           });
         }
       });
-      */
-
-      dialogRef3.afterClosed().subscribe(amount => {
-        if (amount) {
-         this.renderPayPal(amount);
-        }
-      });
 
     }
-      
-    renderPayPal(amountt:number){
-      window.paypal.Buttons({
-        createOrder:(data:any,actions:any)=>{
-          return actions.order.create({
-            purchase_units:[
-              {
-                amount:{
-                  value:amountt.toString(),
-                  currency_code:'USD'
-                }
-              }
-            ]
-          }
-
-          )
-        },
-
-        onApprove:(data:any,actions:any)=>{
-          return actions.order.capture().then((details:any)=>{
-              if(details.status==='COMPLETED'){
-                console.log('USPJESNO', details.id)
-              }
-          })
-        },
-        onError:(error:any)=>{
-
-        }
-
-
-
-      }).render(this.paymentRef.nativeElement);
+    showRewardMessage() {
+      const dialogRef3 = this.dialog.open(RewardMessageComponent,{
+      });
     }
 }

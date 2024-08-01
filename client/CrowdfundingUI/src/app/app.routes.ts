@@ -4,6 +4,7 @@ import { ShowCampaignsComponent } from './campaigns/show-campaigns/show-campaign
 import { CreateCampaignComponent } from './campaigns/create-campaign/create-campaign.component';
 import { DonateComponent } from './campaigns/donate/donate.component';
 import { DonatePayPalComponent } from './campaigns/donate-pay-pal/donate-pay-pal.component';
+import { RewardMessageComponent } from './campaigns/reward-message/reward-message.component';
 
 export const routes: Routes = [
     {path:'login',component:LoginComponent},
@@ -11,4 +12,5 @@ export const routes: Routes = [
     {path: 'create',component : CreateCampaignComponent},
     {path: 'donate',component : DonateComponent},
     {path: 'donatePayPal',component : DonatePayPalComponent},
+    {path: 'rewardMessage',component : RewardMessageComponent},
 ];
