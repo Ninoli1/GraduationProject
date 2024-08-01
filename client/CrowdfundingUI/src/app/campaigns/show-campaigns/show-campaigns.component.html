@@ -15,8 +15,8 @@
 <div class="grid-container">
    
     <div class="card" *ngFor="let item of campaigns">
+      <img [src]="item.imageUrl" alt="Campaign Image" class="campaign-image">
       <h3>{{ item.name }}</h3>
-      <p>{{ item.description }}</p>
       <p>Goal Amount: {{ item.goalAmount | currency }}</p>
       <p>Deadline: {{ item.deadline | date:'shortDate' }}</p>
       <p>Donated Amount: {{ item.donatedAmount | currency }}</p>

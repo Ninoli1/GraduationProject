@@ -6,4 +6,5 @@ export interface Campaign{
     deadline: Date;
     userId: number;
     donatedAmount: number;
+    imageUrl: string
 }

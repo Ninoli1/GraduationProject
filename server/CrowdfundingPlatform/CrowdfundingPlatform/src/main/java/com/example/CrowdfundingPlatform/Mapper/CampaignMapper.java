@@ -19,6 +19,7 @@ public class CampaignMapper {
         dto.setUserId(campaign.getUserId());
         dto.setDonatedAmount(campaign.getDonatedAmount());
         dto.setGoalAmount(campaign.getGoalAmount());
+        dto.setImageUrl(campaign.getImageUrl());
 
         return dto;
     }
@@ -32,6 +33,7 @@ public class CampaignMapper {
         campaign.setUserId(dto.getUserId());
         campaign.setDonatedAmount(dto.getDonatedAmount());
         campaign.setGoalAmount(dto.getGoalAmount());
+        campaign.setImageUrl(dto.getImageUrl());
 
         return campaign;
     }

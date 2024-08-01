@@ -21,13 +21,15 @@ public class CampaignDto {
 
     public double  donatedAmount;
 
-    public CampaignDto(String name, String description, double goalAmount, String deadline, long userId, double donatedAmount) {
+    public String imageUrl;
+    public CampaignDto(String name, String description, double goalAmount, String deadline, long userId, double donatedAmount,String imageUrl) {
         this.name = name;
         this.description = description;
         this.goalAmount = goalAmount;
         this.deadline = deadline;
         this.userId = userId;
         this.donatedAmount = donatedAmount;
+        this.imageUrl=imageUrl;
     }
 
     public CampaignDto() {

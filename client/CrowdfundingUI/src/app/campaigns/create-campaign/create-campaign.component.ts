@@ -26,11 +26,28 @@ export class CreateCampaignComponent {
     deadline: new Date(),
     userId:0,
     donatedAmount:0,
-    id:0
+    id:0,
+    imageUrl: ''
   }
 
   onSubmit(){
     this.dialogRef.close(this.campaign);
   }
 
+  selectedFile?: File;
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader.result) {
+          this.campaign.imageUrl = reader.result.toString(); 
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 }

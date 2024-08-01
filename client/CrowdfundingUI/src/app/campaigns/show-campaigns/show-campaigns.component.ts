@@ -50,6 +50,7 @@ export class ShowCampaignsComponent {
     this.campaignService.getAll().subscribe({
       next:(response)=>{
         this.campaigns=response
+        console.log(this.campaigns)
       },
       error:(err:any)=>{
         console.log(err)

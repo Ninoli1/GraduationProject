@@ -16,6 +16,10 @@
         <label for="deadline">Deadline:</label>
         <input type="date" id="deadline" required [(ngModel)]="campaign.deadline" name="deadline" class="form-control">
       </div>
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input type="file" id="image" (change)="onFileChange($event)" name="image" class="form-control">
+      </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.w3c.dom.Text;
 
 import java.time.LocalDateTime;
 
@@ -30,13 +31,17 @@ public class Campaign {
 
     public double  donatedAmount;
 
-    public Campaign(String name, String description, double goalAmount, String deadline, long userId, double donatedAmount) {
+    @Column(columnDefinition = "TEXT")
+    public String imageUrl;
+
+    public Campaign(String name, String description, double goalAmount, String deadline, long userId, double donatedAmount,String imageUrl) {
         this.name = name;
         this.description = description;
         this.goalAmount = goalAmount;
         this.deadline = deadline;
         this.userId = userId;
         this.donatedAmount = donatedAmount;
+        this.imageUrl=imageUrl;
     }
 
     public Campaign() {
