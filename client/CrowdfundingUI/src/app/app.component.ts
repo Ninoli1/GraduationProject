@@ -19,6 +19,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { DonateComponent } from './campaigns/donate/donate.component';
 import { DonatePayPalComponent } from './campaigns/donate-pay-pal/donate-pay-pal.component';
 import { RewardMessageComponent } from './campaigns/reward-message/reward-message.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './TokenInterceptor';
+import { JwtConfigModule } from './jwt-config.module';
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -37,8 +42,8 @@ import { RewardMessageComponent } from './campaigns/reward-message/reward-messag
     MatTabsModule,
     HttpClientModule,
 
-
-
+    JwtConfigModule,
+    
 
 
 
@@ -49,7 +54,15 @@ import { RewardMessageComponent } from './campaigns/reward-message/reward-messag
     CreateCampaignComponent,
     DonateComponent,
     DonatePayPalComponent,
-    RewardMessageComponent
+    RewardMessageComponent,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

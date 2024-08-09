@@ -2,8 +2,8 @@
     <form [formGroup]="userForm" class="form-wrap">
       <div class="first-form">
         <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" type="text" />
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" type="text" />
         </mat-form-field>
   
         <mat-form-field>
@@ -11,7 +11,7 @@
           <input matInput formControlName="password" type="password" />
         </mat-form-field>
       </div>
-      <button class="button1" type="submit" color="primary" >
+      <button class="button1" type="submit" color="primary" (click)="login()">
         Log in
       </button>
     </form>

@@ -106,8 +106,8 @@ export class ShowCampaignsComponent {
     this.web3Service.rewardUser('address', '1')
       .then(() => {
         console.log('User rewarded successfully');
-        this.showRewardMessage()
         this.showConfettiMultipleTimes()
+        this.showRewardMessage()
       })
       .catch((err: any) => {
         console.error('Failed to reward user', err);
@@ -133,7 +133,7 @@ export class ShowCampaignsComponent {
   
     showConfettiMultipleTimes() {
       let count = 0;
-      const maxCount = 10; // Broj ponavljanja
+      const maxCount = 11; // Broj ponavljanja
       const interval = 500; // Interval između prikazivanja u milisekundama
   
       const intervalId = setInterval(() => {
@@ -154,7 +154,7 @@ export class ShowCampaignsComponent {
           console.log('zatvorio')
           this.campaignService.updateAmount(amount,campaignId).subscribe({
             next: (res) => {
-              
+              console.log(res)
              this.getAllCampaigns();
              
             },
