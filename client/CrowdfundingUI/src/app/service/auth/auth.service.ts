@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, map, Observable } from 'rxjs';
@@ -43,6 +43,15 @@ export class AuthService {
           return true;
         })
       );
+  }
+
+  register(user:User):Observable<String>{
+    const token = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<String>(this.apiUrl + 'authentication/register',user,{headers, responseType: 'text' as 'json'});
   }
 
   logout(): void {

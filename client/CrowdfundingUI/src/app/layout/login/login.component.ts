@@ -26,7 +26,8 @@ export class LoginComponent {
     username:'',
     password:'',
     email:'',
-    id:0
+    id:0,
+    role: 'USER'
   }
 
   userForm = new FormGroup({

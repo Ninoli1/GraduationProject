@@ -1,0 +1,29 @@
+<div class="form-container">
+   
+    <form >
+        <div class="form-group">
+            <h4 class="form-title">Register</h4>
+          </div>
+      <div class="form-group">
+        <label for="name">Username :</label>
+        <input type="text" id="name" required [(ngModel)]="user.username" name="username" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="name">Email :</label>
+        <input type="text" id="name" required [(ngModel)]="user.email" name="email" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="name">Password :</label>
+        <input type="text" id="name" required [(ngModel)]="user.password" name="password" class="form-control">
+      </div>
+     
+      <div class="form-group">
+        <button class="button1" type="submit" color="primary" (click)="onSubmit()" >
+            Register
+          </button>
+      </div>
+    </form>
+  </div>
+  

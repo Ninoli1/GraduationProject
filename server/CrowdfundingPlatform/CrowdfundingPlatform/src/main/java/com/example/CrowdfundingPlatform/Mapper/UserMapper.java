@@ -1,6 +1,7 @@
 package com.example.CrowdfundingPlatform.Mapper;
 
 import com.example.CrowdfundingPlatform.Dto.UserDto;
+import com.example.CrowdfundingPlatform.Model.Role;
 import com.example.CrowdfundingPlatform.Model.User;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ public class UserMapper {
         userDto.setPassword(user.getPassword());
         userDto.setEmail(user.getEmail());
         userDto.setUsername(user.getUsername());
+        userDto.setRole(user.getRole().toString());
         return userDto;
     }
 
@@ -22,6 +24,8 @@ public class UserMapper {
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
         user.setUsername(userDto.getUsername());
+        Role role = Role.valueOf(userDto.getRole().toUpperCase());
+        user.setRole(role);
 
         return user;
     }

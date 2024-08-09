@@ -24,6 +24,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './TokenInterceptor';
 import { JwtConfigModule } from './jwt-config.module';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { RegisterComponent } from './register/register/register.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -55,6 +56,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     DonateComponent,
     DonatePayPalComponent,
     RewardMessageComponent,
+    RegisterComponent
   ],
   providers: [
     {
