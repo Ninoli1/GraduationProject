@@ -1,7 +1,7 @@
 
 <h3 class="title">Campaigns</h3>
 <div class="categories-container">
-  <div class="category" *ngFor="let category of categories" matTooltip="{{category.name}}"  >
+  <div class="category" *ngFor="let category of categories" matTooltip="{{category.name}}" (click)="filterCampaignsByCategory(category.name)"  >
     <div class="category-icon">
       <!-- Ubacivanje slike iz assets foldera -->
       <img *ngIf="!category.emoji" [src]="category.image" >
@@ -17,6 +17,8 @@
     <div class="card" *ngFor="let item of campaigns">
       <img [src]="item.imageUrl" alt="Campaign Image" class="campaign-image">
       <h3>{{ item.name }}</h3>
+      <p (click)="openDetailsDialog(item)" class="more-details-link">More Details</p>
+
       <p>Goal Amount: {{ item.goalAmount | currency }}</p>
       <p>Deadline: {{ item.deadline | date:'shortDate' }}</p>
       <p>Donated Amount: {{ item.donatedAmount | currency }}</p>

@@ -31,10 +31,14 @@ public class Campaign {
 
     public double  donatedAmount;
 
+    public String category;
+
     @Column(columnDefinition = "TEXT")
     public String imageUrl;
 
-    public Campaign(String name, String description, double goalAmount, String deadline, long userId, double donatedAmount,String imageUrl) {
+    public Status status;
+
+    public Campaign(String name, String description, double goalAmount, String deadline, long userId, double donatedAmount,String imageUrl,String category) {
         this.name = name;
         this.description = description;
         this.goalAmount = goalAmount;
@@ -42,6 +46,7 @@ public class Campaign {
         this.userId = userId;
         this.donatedAmount = donatedAmount;
         this.imageUrl=imageUrl;
+        this.category=category;
     }
 
     public Campaign() {

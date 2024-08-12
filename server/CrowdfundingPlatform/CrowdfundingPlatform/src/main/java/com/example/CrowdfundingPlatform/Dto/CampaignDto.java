@@ -22,7 +22,11 @@ public class CampaignDto {
     public double  donatedAmount;
 
     public String imageUrl;
-    public CampaignDto(String name, String description, double goalAmount, String deadline, long userId, double donatedAmount,String imageUrl) {
+
+    public String category;
+
+    public String status;
+    public CampaignDto(String name, String description, double goalAmount, String deadline, long userId, double donatedAmount,String imageUrl, String category) {
         this.name = name;
         this.description = description;
         this.goalAmount = goalAmount;
@@ -30,6 +34,7 @@ public class CampaignDto {
         this.userId = userId;
         this.donatedAmount = donatedAmount;
         this.imageUrl=imageUrl;
+        this.category=category;
     }
 
     public CampaignDto() {

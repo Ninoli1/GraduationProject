@@ -2,6 +2,8 @@ package com.example.CrowdfundingPlatform.Mapper;
 
 import com.example.CrowdfundingPlatform.Dto.CampaignDto;
 import com.example.CrowdfundingPlatform.Model.Campaign;
+import com.example.CrowdfundingPlatform.Model.Role;
+import com.example.CrowdfundingPlatform.Model.Status;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -20,6 +22,8 @@ public class CampaignMapper {
         dto.setDonatedAmount(campaign.getDonatedAmount());
         dto.setGoalAmount(campaign.getGoalAmount());
         dto.setImageUrl(campaign.getImageUrl());
+        dto.setCategory(campaign.getCategory());
+        dto.setStatus(campaign.getStatus().toString());
 
         return dto;
     }
@@ -34,6 +38,9 @@ public class CampaignMapper {
         campaign.setDonatedAmount(dto.getDonatedAmount());
         campaign.setGoalAmount(dto.getGoalAmount());
         campaign.setImageUrl(dto.getImageUrl());
+        campaign.setCategory(dto.getCategory());
+        Status status = Status.valueOf(dto.getStatus().toUpperCase());
+        campaign.setStatus(status);
 
         return campaign;
     }

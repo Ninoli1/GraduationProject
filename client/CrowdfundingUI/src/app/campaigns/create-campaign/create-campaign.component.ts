@@ -27,7 +27,9 @@ export class CreateCampaignComponent {
     userId:0,
     donatedAmount:0,
     id:0,
-    imageUrl: ''
+    imageUrl: '',
+    category:'',
+    status:'CREATED'
   }
 
   onSubmit(){

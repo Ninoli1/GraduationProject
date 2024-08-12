@@ -122,4 +122,12 @@
     border-radius: 8px;
     object-fit: cover; /* Obezbeđuje da slika ne bude izobličena */
   }
+
+  .more-details-link {
+    color: blue; /* Plava boja */
+    text-decoration: underline; /* Podvlačenje teksta */
+    font-style: italic; /* Iskošen tekst */
+    cursor: pointer; /* Promena kursora kao kod linka */
+}
+
   

@@ -14,6 +14,8 @@ import { DonatePayPalComponent } from '../donate-pay-pal/donate-pay-pal.componen
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RewardMessageComponent } from '../reward-message/reward-message.component';
+import { DescriptionComponent } from '../description/description.component';
+import { AuthService } from '../../service/auth/auth.service';
 
 declare var paypal: any;
 
@@ -33,16 +35,19 @@ declare var paypal: any;
 })
 export class ShowCampaignsComponent {
   campaigns : Campaign[]=[]
+  campaignsCopy : Campaign[]=[]
   categories = [
-    { name: 'REDUCE CO2', image:'/assets/creduce.jpg'},
+    { name: 'Reduce CO2', image:'/assets/creduce.jpg'},
     { name: 'Green Spaces', image: '', emoji: '🌳' },
     { name: 'Clean Water', image: '/assets/cleanwater.jpg', emoji: '💧' },
     { name: 'Animals', image:'/assets/sapa.png' },
+    { name: 'All', image:'/assets/all.png' },
+    { name: 'Done', image:'/assets/done.jpg' },
     
   ];
-  constructor(private campaignService: CampaignService,private dialog: MatDialog,private web3Service : Web3Service,private snackBar:MatSnackBar) {
+  constructor(private campaignService: CampaignService,private dialog: MatDialog,private web3Service : Web3Service,private snackBar:MatSnackBar,private authService: AuthService) {
     this.getAllCampaigns()
-  
+    console.log('CLAIMS',this.authService.userClaims)
   }
  
 
@@ -50,6 +55,8 @@ export class ShowCampaignsComponent {
     this.campaignService.getAll().subscribe({
       next:(response)=>{
         this.campaigns=response
+        this.campaigns = this.campaigns.filter(campaign => campaign.status !='DONE');
+        this.campaignsCopy=this.campaigns
         console.log(this.campaigns)
       },
       error:(err:any)=>{
@@ -170,4 +177,30 @@ export class ShowCampaignsComponent {
       const dialogRef3 = this.dialog.open(RewardMessageComponent,{
       });
     }
+
+    filteredCampaigns: Campaign[] = [];
+
+filterCampaignsByCategory(category: string): void {
+  if (category=='All') {
+    this.campaigns=this.campaignsCopy
+  } else {
+    if(category=='Done'){
+      this.campaigns = this.campaignsCopy.filter(campaign => campaign.status == 'DONE');
+    }else{
+      this.campaigns = this.campaignsCopy.filter(campaign => campaign.category === category);
+    }
+
+    
+  
+  }
+}
+
+openDetailsDialog(campaign: any): void {
+  this.dialog.open(DescriptionComponent, {
+    width: '400px',
+    data: campaign
+  });
+}
+
+
 }

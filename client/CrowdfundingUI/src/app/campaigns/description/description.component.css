@@ -1,0 +1,20 @@
+.dialog-container {
+    text-align: center;
+    border-radius: 15px;
+  }
+  
+  .campaign-image {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  
+  h2 {
+    margin-top: 1rem;
+  }
+  
+  p {
+    margin: 1rem 0;
+  }
+  

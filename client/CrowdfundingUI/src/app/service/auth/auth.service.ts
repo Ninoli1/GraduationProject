@@ -22,6 +22,7 @@ export class AuthService {
   public passChangeObserver = this.passChangeSource.asObservable();
 
   constructor(private http: HttpClient) {
+    const token= localStorage.getItem('token')
     this.userClaims = this.jwtHelper.decodeToken();
     if (this.userClaims) this.loginSource.next(true);
   }
@@ -37,7 +38,8 @@ export class AuthService {
           console.log('Login success');
           console.log(res);
           localStorage.setItem('token', res.token);
-          this.userClaims = this.jwtHelper.decodeToken();
+          this.userClaims = this.jwtHelper.decodeToken(res.token);
+          console.log('claims',this.userClaims)
           this.access_token = res.token;
           this.loginSource.next(true);
           return true;

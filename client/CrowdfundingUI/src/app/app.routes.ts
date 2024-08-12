@@ -6,6 +6,7 @@ import { DonateComponent } from './campaigns/donate/donate.component';
 import { DonatePayPalComponent } from './campaigns/donate-pay-pal/donate-pay-pal.component';
 import { RewardMessageComponent } from './campaigns/reward-message/reward-message.component';
 import { RegisterComponent } from './register/register/register.component';
+import { DescriptionComponent } from './campaigns/description/description.component';
 
 export const routes: Routes = [
     {path:'login',component:LoginComponent},
@@ -14,5 +15,6 @@ export const routes: Routes = [
     {path: 'donate',component : DonateComponent},
     {path: 'donatePayPal',component : DonatePayPalComponent},
     {path: 'rewardMessage',component : RewardMessageComponent},
-    {path:'register',component:RegisterComponent}
+    {path:'register',component:RegisterComponent},
+    {path:'details',component:DescriptionComponent}
 ];
